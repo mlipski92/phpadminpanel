@@ -1,15 +1,22 @@
 <?php
 
 namespace App\Controllers;
+
+use Twig\Environment;
+
+
 class DefaultController {
+    protected $twig;
+    public function __construct(Environment $twig) {
+        $this->twig = $twig;
+    }
 
     public function index() {
-        //login.html
+        echo $this->twig->render('home.html.twig', ['name' => 'Mateusz']);
         die("index method");
     }
 
     public function projects() {
-        //project.html
         die("projects method");
     }
     

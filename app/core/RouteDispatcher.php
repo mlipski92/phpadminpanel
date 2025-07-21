@@ -1,14 +1,18 @@
 <?php
 namespace App\Core;
 
+use Twig\Environment;
+
 class RouteDispatcher {
     private string $method;
     private string $uri;
     private array $routes = [];
+    private Environment $twig;
 
-    public function __construct(string $method, string $uri) {
+    public function __construct(string $method, string $uri, Environment $twig) {
         $this->method = $method;
         $this->uri = rtrim($uri, '/');
+        $this->twig = $twig;
 
         if ('' === $this->uri) {
             $this->uri = '/';
@@ -32,7 +36,7 @@ class RouteDispatcher {
                     [$controllerName, $methodName] = $action;
 
                     if (class_exists($controllerName)) {
-                        $controller = new $controllerName();
+                        $controller = new $controllerName($this->twig);
 
                         if (method_exists($controller, $methodName)) {
                             return call_user_func_array([$controller, $methodName], $params);
