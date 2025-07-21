@@ -22,6 +22,8 @@ class Routes {
 
         $router = new Router();
         $router->get('/', [DefaultController::class, 'index']);
+        $router->get('/login', [DefaultController::class, 'login']);
+        $router->get('/register', [DefaultController::class, 'register']);
 
         $dispatcher = new RouteDispatcher($_SERVER['REQUEST_METHOD'], $cleanUri, $this->twig);
         $dispatcher->setRoutes($router->getRoutes());

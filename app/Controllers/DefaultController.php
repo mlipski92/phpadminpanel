@@ -13,11 +13,14 @@ class DefaultController {
 
     public function index() {
         echo $this->twig->render('home.html.twig', ['name' => 'Mateusz']);
-        die("index method");
     }
 
-    public function projects() {
-        die("projects method");
+    public function login() {
+        echo $this->twig->render('login.html.twig');
+    }
+
+    public function register() {
+        echo $this->twig->render('register.html.twig');
     }
     
 }

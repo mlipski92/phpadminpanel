@@ -1,23 +1,51 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Witaj</title>
-    <link rel="stylesheet" href="/adminpanel/public/build/assets/app-CSbnctrk.css">
+  <meta charset="UTF-8">
+  <title>Komentarze</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/adminpanel/public/build/assets/app-DRbe5CQc.css">
 </head>
-<body>
-    <h1>Witaj {{ name }}!</h1>
+<body class="bg-gray-100 min-h-screen p-6">
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-gray-800">Komentarze</h1>
 
-    <div class="container mx-auto px-4 py-8">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="bg-white p-6 rounded shadow">Panel 1</div>
-    <div class="bg-white p-6 rounded shadow">Panel 2</div>
+    <!-- Komentarze -->
+    <div class="space-y-4 mb-8">
+      <div class="border border-gray-200 rounded p-4">
+        <p class="text-gray-700">To bardzo przydatna funkcja! Dziękuję!</p>
+        <p class="text-sm text-gray-500 mt-2">– Jan K</p>
+      </div>
+      <div class="border border-gray-200 rounded p-4">
+        <p class="text-gray-700">Świetna robota, trzymam kciuki za rozwój projektu!</p>
+        <p class="text-sm text-gray-500 mt-2">– Anna M</p>
+      </div>
+      <div class="border border-gray-200 rounded p-4">
+        <p class="text-gray-700">Zgłaszam mały błąd w formularzu, ale generalnie super :)</p>
+        <p class="text-sm text-gray-500 mt-2">– Tomasz Z</p>
+      </div>
+    </div>
+<br ><br>
+    <!-- Formularz dodawania komentarza -->
+    <form action="/comments" method="POST" class="space-y-4">
+      <div>
+        <label for="comment" class="block text-sm font-medium text-gray-700 mb-1">Twój komentarz jako <strong>Mateusz L</strong>:</label>
+        <textarea
+          id="comment"
+          name="comment"
+          rows="4"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition duration-200"
+      >
+        Dodaj komentarz
+      </button>
+    </form>
   </div>
-</div>
-
-<div class="grid grid-cols-2 gap-4 bg-gray-100 p-4">
-  <div class="bg-white p-4 shadow rounded">Panel 1</div>
-  <div class="bg-white p-4 shadow rounded">Panel 2</div>
-</div>
 </body>
 </html>
