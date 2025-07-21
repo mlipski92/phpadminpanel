@@ -4,7 +4,6 @@ namespace App\Core;
 class Router {
     private static array $routes = [];
 
-    // Zmieniamy typ $action na string|array
     public static function addRoute(string $method, string $route, array|string $action): void {
         self::$routes[$method][$route] = $action;
     }
