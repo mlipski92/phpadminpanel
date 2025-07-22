@@ -82,8 +82,9 @@ class User {
     }
 
     public function destroySession() {
-        session_unset();
-        session_destroy(); 
+        session_start();
+        unset($_SESSION['email'], $_SESSION['user_id']);
+        \App\Services\MessageService::set('error', 'Wylogowano');
         header('Location: /adminpanel'); 
         exit;
     }

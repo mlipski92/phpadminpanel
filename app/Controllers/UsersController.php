@@ -70,8 +70,9 @@ class UsersController {
         $userService = new User();
         $userService->destroySession();
 
-        session_start();
-        \App\Services\MessageService::set('error', 'Wylogowano');
+
+        // session_start();
+        // \App\Services\MessageService::set('error', 'Wylogowano');
         header('Location: /adminpanel');
         exit;
     }
