@@ -26,6 +26,8 @@ class Routes {
         $router->get('/login', [UsersController::class, 'login']);
         $router->get('/register', [UsersController::class, 'register']);
         $router->post('/add-user', [UsersController::class, 'adduser']);
+        $router->post('/getin', [UsersController::class, 'getin']);
+        $router->get('/getout', [UsersController::class, 'getout']);
 
         $dispatcher = new RouteDispatcher($_SERVER['REQUEST_METHOD'], $cleanUri, $this->twig);
         $dispatcher->setRoutes($router->getRoutes());

@@ -23,7 +23,6 @@ class UsersController {
     public function adduser() {
         $data = $_POST;
         $validate = User::validate($data);
-        // var_dump($validate);
         if($validate !== true) {
             echo $validate["message"];
             exit;
@@ -43,7 +42,33 @@ class UsersController {
             echo "Błąd przy zapisie do bazy.";
             exit;
         }
-
-        // header('Location: /adminpanel/login');
     }
+
+    public function getin() {
+        $data = $_POST;
+        // var_dump($data);
+
+        $userModel = new UserModel($data['email'], '', $data['password']);
+
+        $repo = new UserRepository();
+        $result = $repo->checkUser($userModel);
+
+        if ($result['status'] === 'failed') {
+            echo $result['message'];
+            exit;
+        }
+
+        $userService = new User();
+        $userService->createSession($result);
+
+        header('Location: /adminpanel');
+        exit;
+    }
+
+    public function getout() {
+        $userService = new User();
+        $userService->destroySession();
+    }
+
+
 }

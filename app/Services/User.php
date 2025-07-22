@@ -66,4 +66,26 @@ class User {
         ];
     }
 
+    public function createSession($result) {
+        // var_dump($result['user']);exit;
+        $_SESSION['user_id'] = $result['user']['id'];
+        $_SESSION['email'] = $result['user']['email'];
+        // exit;
+    }
+
+    public function checkSession() {
+        if (isset($_SESSION['user_id'])) {
+            return $_SESSION['email'];
+        } else {
+            return false;
+        }
+    }
+
+    public function destroySession() {
+        session_unset();
+        session_destroy(); 
+        header('Location: /adminpanel'); 
+        exit;
+    }
+
 }

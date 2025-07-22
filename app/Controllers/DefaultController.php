@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Services\User;
 use Twig\Environment;
 
 
@@ -12,7 +13,9 @@ class DefaultController {
     }
 
     public function index() {
-        echo $this->twig->render('home.html.twig', ['name' => 'Mateusz']);
+        $userService = new User();
+        // var_dump($userService->checkSession());
+        echo $this->twig->render('home.html.twig', ['name' => $userService->checkSession()]);
     }
 
 
