@@ -10,8 +10,10 @@ use Twig\Environment;
 class UsersController {
     protected $twig;
     protected $user;
-    public function __construct(Environment $twig) {
+    protected $userService;
+    public function __construct(Environment $twig, User $userService) {
         $this->twig = $twig;
+        $this->userService = $userService;
     }
     public function login() {
         echo $this->twig->render('login.html.twig');
@@ -46,7 +48,6 @@ class UsersController {
 
     public function getin() {
         $data = $_POST;
-        // var_dump($data);
 
         $userModel = new UserModel($data['email'], '', $data['password']);
 
@@ -60,7 +61,7 @@ class UsersController {
 
         $userService = new User();
         $userService->createSession($result);
-
+        \App\Services\MessageService::set('error', 'Zalogowano');
         header('Location: /adminpanel');
         exit;
     }
@@ -68,6 +69,11 @@ class UsersController {
     public function getout() {
         $userService = new User();
         $userService->destroySession();
+
+        session_start();
+        \App\Services\MessageService::set('error', 'Wylogowano');
+        header('Location: /adminpanel');
+        exit;
     }
 
 

@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="/adminpanel/public/build/assets/app-DRbe5CQc.css">
 </head>
 <body class="bg-gray-100 min-h-screen p-6">
+
+{% if flash != null %}
+  <div style="border:1px solid red">{{flash['message']}}</div>
+{% endif %}
+
 <div>
 {% if name %}<p>Zalogowany jako <strong>{{name}}</strong> | <a href="/adminpanel/getout">Wyloguj się</a></p>{% endif %}
 {% if name == false %}<a href="/adminpanel/login">Zaloguj się</a>{% endif %}

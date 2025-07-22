@@ -35,9 +35,6 @@ class UserRepository {
         if (!password_verify($userModel->password, $user['password'])) {
             return ['status' => 'failed', 'message' => 'Nieprawidłowe hasło.'];
         }
-        // var_dump('zalogowano'); exit;
-        // $_SESSION['user_id'] = $user['id'];
-        // $_SESSION['username'] = $user['username'];
 
         return ['status' => 'success', 'message' => 'Zalogowano.', 'user' => ['id' => $user['id'], 'email' => $user['email']]];
     }  

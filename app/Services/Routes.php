@@ -11,9 +11,11 @@ use Twig\Environment;
 
 class Routes {
     private Environment $twig;
+    private User $userService;
 
-    public function __construct(Environment $twig) {
+    public function __construct(Environment $twig, User $userService) {
         $this->twig = $twig;
+        $this->userService = $userService;
     }
     public function initRoutes() {
 
@@ -29,7 +31,7 @@ class Routes {
         $router->post('/getin', [UsersController::class, 'getin']);
         $router->get('/getout', [UsersController::class, 'getout']);
 
-        $dispatcher = new RouteDispatcher($_SERVER['REQUEST_METHOD'], $cleanUri, $this->twig);
+        $dispatcher = new RouteDispatcher($_SERVER['REQUEST_METHOD'], $cleanUri, $this->twig, $this->userService);
         $dispatcher->setRoutes($router->getRoutes());
         $dispatcher->dispatch();
     }

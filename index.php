@@ -1,4 +1,6 @@
 <?php
+
+use App\Services\User;
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -18,5 +20,7 @@ $database->dbConnect();
 $viewsLoader = new FilesystemLoader(__DIR__ . '/App/Views');
 $twig = new Environment($viewsLoader);
 
-$routes = new Routes($twig);
+$userService = new User();
+
+$routes = new Routes($twig, $userService);
 $routes->initRoutes();

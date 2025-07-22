@@ -14,8 +14,12 @@ class DefaultController {
 
     public function index() {
         $userService = new User();
-        // var_dump($userService->checkSession());
-        echo $this->twig->render('home.html.twig', ['name' => $userService->checkSession()]);
+        
+        $flash = \App\Services\MessageService::get();
+        var_dump($_SESSION); 
+        // var_dump($flash);
+
+        echo $this->twig->render('home.html.twig', ['name' => $userService->checkSession(), 'flash' => $flash]);
     }
 
 
