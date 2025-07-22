@@ -25,7 +25,7 @@ class RouteDispatcher {
 
     public function dispatch() {
         foreach ($this->routes[$this->method] ?? [] as $route => $action) {
-// var_dump($this->routes[$this->method]); exit;
+
             $pattern = preg_replace('/:[^\/]+/', '([^\/]+)', $route);
             $pattern = '#^' . $pattern . '$#';
 

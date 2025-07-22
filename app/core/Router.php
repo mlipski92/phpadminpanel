@@ -12,6 +12,10 @@ class Router {
         self::addRoute('GET', $route, $action);
     }
 
+    public function post(string $route, array|string $action): void {
+        self::addRoute('POST', $route, $action);
+    }
+
     public function getRoutes(): array {
         return self::$routes;
     }

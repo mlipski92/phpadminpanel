@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Controllers\DefaultController;
+use App\Controllers\UsersController;
 use App\Core\RouteDispatcher;
 use App\Core\Router;
 use Dotenv\Dotenv;
@@ -22,8 +23,9 @@ class Routes {
 
         $router = new Router();
         $router->get('/', [DefaultController::class, 'index']);
-        $router->get('/login', [DefaultController::class, 'login']);
-        $router->get('/register', [DefaultController::class, 'register']);
+        $router->get('/login', [UsersController::class, 'login']);
+        $router->get('/register', [UsersController::class, 'register']);
+        $router->post('/add-user', [UsersController::class, 'adduser']);
 
         $dispatcher = new RouteDispatcher($_SERVER['REQUEST_METHOD'], $cleanUri, $this->twig);
         $dispatcher->setRoutes($router->getRoutes());

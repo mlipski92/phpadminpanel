@@ -15,12 +15,6 @@ class DefaultController {
         echo $this->twig->render('home.html.twig', ['name' => 'Mateusz']);
     }
 
-    public function login() {
-        echo $this->twig->render('login.html.twig');
-    }
 
-    public function register() {
-        echo $this->twig->render('register.html.twig');
-    }
     
 }

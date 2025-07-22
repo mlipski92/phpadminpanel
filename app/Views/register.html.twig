@@ -10,14 +10,14 @@
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Zarejestruj się</h1>
 
-    <form action="/register" method="POST" class="space-y-4">
+    <form action="/adminpanel/add-user" method="POST" class="space-y-4">
       
       <div>
         <label for="nickname" class="block text-sm font-medium text-gray-700">Ksywa</label>
         <input
           type="text"
-          id="nickname"
-          name="nickname"
+          id="name"
+          name="name"
           required
           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
@@ -49,8 +49,8 @@
         <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Powtórz hasło</label>
         <input
           type="password"
-          id="password_confirmation"
-          name="password_confirmation"
+          id="passwordconfirmation"
+          name="passwordconfirmation"
           required
           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
